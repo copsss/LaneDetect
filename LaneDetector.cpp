@@ -54,7 +54,7 @@ cv::Mat LaneDetector::edgeDetector(cv::Mat img_noise)
 
     // Filter the binary image to obtain the edges
     cv::filter2D(output, output, -1, kernel, anchor, 0, cv::BORDER_DEFAULT);
-    cv::imshow("output", output);
+    // 移除显示：cv::imshow("output", output);
     return output;
 }
 
@@ -288,8 +288,9 @@ int LaneDetector::plotLane(cv::Mat inputImage, std::vector<cv::Point> lane, std:
     // Plot the turn message
     cv::putText(inputImage, turn, cv::Point(50, 90), cv::FONT_HERSHEY_COMPLEX_SMALL, 3, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
 
-    // Show the final output image
-    cv::namedWindow("Lane", cv::WINDOW_AUTOSIZE);
-    cv::imshow("Lane", inputImage);
+    // 移除显示相关代码：
+    // cv::namedWindow("Lane", cv::WINDOW_AUTOSIZE);
+    // cv::imshow("Lane", inputImage);
+    
     return 0;
 }

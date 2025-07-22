@@ -24,44 +24,28 @@ int main()
     std::string turn;
     int flag_plot = -1;         // 返回值
 
-
-    // 输入视频文件名
-    std::string input_video = "video_challenge.mp4";
-    // 自动生成输出视频文件名
-    std::string output_video_color, output_video_bw;
-    size_t dot_pos = input_video.find_last_of('.');
-    if (dot_pos != std::string::npos) {
-        output_video_color = input_video.substr(0, dot_pos) + "_color_output" + input_video.substr(dot_pos);
-        output_video_bw = input_video.substr(0, dot_pos) + "_bw_output" + input_video.substr(dot_pos);
-    } else {
-        output_video_color = input_video + "_color_output.mp4";
-        output_video_bw = input_video + "_bw_output.mp4";
-    }
-
-    // 打开输入视频
-    cv::VideoCapture cap(input_video);
+    // 打开测试视频文件
+    cv::VideoCapture cap("video_project.mp4");
     if (!cap.isOpened())
         return -1;
 
-    // 获取视频参数
-    int frame_width = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_WIDTH));
-    int frame_height = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_HEIGHT));
+    // 获取视频属性
+    int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+    int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
     double fps = cap.get(cv::CAP_PROP_FPS);
-    int fourcc = static_cast<int>(cap.get(cv::CAP_PROP_FOURCC));
-    if (fourcc == 0) fourcc = cv::VideoWriter::fourcc('m','p','4','v');
+    
+    // 创建视频写入器
+    cv::VideoWriter video_writer("output_lane_detection.avi", 
+                                cv::VideoWriter::fourcc('M','J','P','G'), 
+                                fps, 
+                                cv::Size(frame_width, frame_height));
 
-    // 创建输出视频写入器（彩色）
-    cv::VideoWriter writer_color(output_video_color, fourcc, fps, cv::Size(frame_width, frame_height));
-    if (!writer_color.isOpened()) {
-        std::cerr << "Failed to open output video file: " << output_video_color << std::endl;
+    if (!video_writer.isOpened()) {
+        std::cout << "无法创建输出视频文件" << std::endl;
         return -1;
     }
-    // 创建输出视频写入器（黑白，单通道转三通道）
-    cv::VideoWriter writer_bw(output_video_bw, fourcc, fps, cv::Size(frame_width, frame_height));
-    if (!writer_bw.isOpened()) {
-        std::cerr << "Failed to open output video file: " << output_video_bw << std::endl;
-        return -1;
-    }
+
+    std::cout << "开始处理视频，输出文件: output_lane_detection.avi" << std::endl;
 
     // 车道线检测算法主循环
     while (1) 
@@ -93,29 +77,28 @@ int main()
             // 预测车道线是向左、向右还是直行
             turn = lanedetector.predictTurn();
 
-            // 在视频图上绘制车道线
+            // 在视频图上绘制车道线并写入视频
             flag_plot = lanedetector.plotLane(frame, lane, turn);
+            
+            // 将处理后的帧写入视频文件
+            video_writer.write(frame);
+            
+            std::cout << "检测到车道线，转向预测: " << turn << std::endl;
         }
         else 
         {
             flag_plot = -1;
+            // 即使没有检测到车道线，也要写入原始帧
+            video_writer.write(frame);
+            std::cout << "未检测到车道线" << std::endl;
         }
-
-        // 写入黑白视频（img_mask单通道转三通道）
-        cv::Mat mask_bgr;
-        if (img_mask.channels() == 1) {
-            cv::cvtColor(img_mask, mask_bgr, cv::COLOR_GRAY2BGR);
-        } else {
-            mask_bgr = img_mask;
-        }
-        writer_bw.write(mask_bgr);
-
-        // 写入彩色视频（frame）
-        writer_color.write(frame);
     }
 
-    writer_color.release();
-    writer_bw.release();
+    // 释放资源
     cap.release();
+    video_writer.release();
+    
+    std::cout << "视频处理完成！输出文件: output_lane_detection.avi" << std::endl;
+
     return flag_plot;
 }

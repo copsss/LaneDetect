@@ -1,0 +1,8 @@
+top - 10:30:24 up 59 min,  2 users,  load average: 1.82, 1.85, 1.87
+任务:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 25.4 us, 13.6 sy,  0.0 ni, 22.0 id, 39.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   3868.6 total,    239.1 free,   1826.8 used,   1802.7 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   1835.0 avail Mem 
+
+ 进程号 USER      PR  NI    VIRT    RES    SHR    %CPU  %MEM     TIME+ COMMAND
+  49521 user      20   0  552816  58204  43436 S 100.0   1.5   0:00.49 main

@@ -1,0 +1,541 @@
+<6> [6555.893438] (61694) imgvideo:omx: IMG_OMD_ComponentInit Done.
+<6> [6555.893669] (61694) imgvideo:vdecapi: *** Decoding NON-SECURE stream ***
+<6> [6555.894158] (61694) imgvideo:core: [SID=0x03000001]: VidStd:4 [VDEC_STD_H264], BstrFmt:2, UsrId:0, UpdateYUV:y, BwEff:n, Secure:n, DisableMvc:n, FullScan:n
+<6> [6555.901925] (61694) imgvideo:vdecdd: [SID=0x03000001] New stream created (stream id: 0x03000001)
+<6> [6555.903869] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.906334] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.908761] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.911235] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.913691] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.916108] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.918609] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.921011] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.923497] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.925920] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.928399] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.930918] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.933484] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.935887] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.938355] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.940762] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.943274] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.945649] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.948074] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [6555.950584] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+开始处理视频...
+彩色输出文件: output_lane_detection_color.avi
+黑白输出文件: output_edge_detection_bw.avi
+视频信息: 1280x720, 29.97fps
+<5> [6555.989132] (61694) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [6555.989200] (61694) imgvideo:omx: VDEC_STOPSTATUS_CLOSED_GOP
+<6> [6555.989206] (61694) imgvideo:omx: VDEC_STOPSTATUS_RECONFIGURE
+<6> [6555.989268] (61694) imgvideo:omx: Port Enabled: 0
+<6> [6555.989273] (61694) imgvideo:omx: PSC: Framerate (Q16) :190000, Height :720, Width :1280, Stride :1280, SliceHeight: 720 BitRate: 3179521717512962048
+<6> [6555.989279] (61694) imgvideo:omx: Left :0  Top :0 Width :1280 Height :720
+<6> [6555.989387] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6555.991566] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6555.993749] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6555.995817] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6555.998022] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.000185] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.002284] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.004469] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.006519] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.008672] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.010816] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [6556.012895] (61694) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Straight
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn left
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+检测到车道线，转向预测: Turn right
+<5> [6760.981028] (61694) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [6760.981385] (61694) imgvideo:omx: MISSING_STOP_FLAG
+<6> [6760.981630] (61694) imgvideo:omx: Flushed Port Index 1
+<5> [6760.981707] (61694) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [6760.981784] (61694) imgvideo:omx: #Total number of Frames Decoded: 472
+<6> [6760.999688] (61694) imgvideo:vdecdd: [SID=0x03000001] Stream destroyed (stream id: 0x03000001)
+
+==========================================
+详细性能测试报告
+==========================================
+整机执行时间: 204994 ms
+总处理帧数: 460
+平均每帧处理时间: 445.639 ms
+实际处理帧率: 2.24397 FPS
+
+模块执行时间分析:
+├── 图像去噪: 16.4501 ms (23.8888%)
+├── 边缘检测: 9.96488 ms (14.471%)
+├── 掩码处理: 1.06557 ms (1.54741%)
+├── Hough变换: 20.9093 ms (30.3646%)
+├── 线分离: 0.02545 ms (0.0369585%)
+├── 回归拟合: 0.050063 ms (0.0727016%)
+├── 转向预测: 0.00298696 ms (0.00433766%)
+└── 结果绘制: 20.3927 ms (29.6142%)
+
+性能瓶颈分析:
+主要瓶颈: Hough变换 (20.9093 ms)
+
+优化建议:
+- Hough变换占用时间较多，可考虑优化参数或使用更高效的直线检测算法
+- 绘制操作可考虑减少不必要的图形操作
+==========================================
+视频处理完成！
+彩色输出文件: output_lane_detection_color.avi
+黑白输出文件: output_edge_detection_bw.avi

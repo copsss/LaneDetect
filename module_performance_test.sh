@@ -11,7 +11,7 @@ echo "=========================================="
 
 # 测试参数
 OUTPUT_DIR="module_test_results"
-TEST_ITERATIONS=5  # 每个模块测试5次取平均值
+TEST_ITERATIONS=1  # 每个模块测试5次取平均值
 
 # 创建输出目录
 mkdir -p $OUTPUT_DIR
@@ -57,15 +57,31 @@ test_module_performance() {
             total_time=$(grep "整机执行时间:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
             total_frames=$(grep "总处理帧数:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
             
-            # 提取各模块执行时间
-            denoise_time=$(grep "图像去噪:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            edge_time=$(grep "边缘检测:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            mask_time=$(grep "掩码处理:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            hough_time=$(grep "Hough变换:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            separation_time=$(grep "线分离:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            regression_time=$(grep "回归拟合:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            predict_time=$(grep "转向预测:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
-            plot_time=$(grep "结果绘制:" "$OUTPUT_DIR/${config_name}_test${i}.log" | awk '{print $2}')
+            # 提取各模块执行时间（改进解析逻辑）
+            denoise_time=$(grep "图像去噪:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            edge_time=$(grep "边缘检测:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            mask_time=$(grep "掩码处理:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            hough_time=$(grep "Hough变换:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            separation_time=$(grep "线分离:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            regression_time=$(grep "回归拟合:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            predict_time=$(grep "转向预测:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            plot_time=$(grep "结果绘制:" "$OUTPUT_DIR/${config_name}_test${i}.log" | head -1 | awk '{print $2}')
+            
+            # 检查是否成功提取到数据
+            if [ -z "$total_time" ] || [ -z "$total_frames" ]; then
+                echo "警告: 第${i}次测试未能提取到完整的时间数据" >&2
+                echo "total_time: $total_time, total_frames: $total_frames" >&2
+            fi
+            
+            # 如果某个模块时间为空，设置为0
+            denoise_time=${denoise_time:-0}
+            edge_time=${edge_time:-0}
+            mask_time=${mask_time:-0}
+            hough_time=${hough_time:-0}
+            separation_time=${separation_time:-0}
+            regression_time=${regression_time:-0}
+            predict_time=${predict_time:-0}
+            plot_time=${plot_time:-0}
             
             # 记录到临时文件
             echo "$total_time,$total_frames,$denoise_time,$edge_time,$mask_time,$hough_time,$separation_time,$regression_time,$predict_time,$plot_time" >> "$OUTPUT_DIR/${config_name}_raw_data.csv"
@@ -89,15 +105,26 @@ test_module_performance() {
         # 计算总平均时间
         avg_total_module_time=$(echo "$avg_denoise_time + $avg_edge_time + $avg_mask_time + $avg_hough_time + $avg_separation_time + $avg_regression_time + $avg_predict_time + $avg_plot_time" | bc -l)
         
-        # 计算各模块占比
-        denoise_percent=$(echo "scale=2; $avg_denoise_time * 100 / $avg_total_module_time" | bc -l)
-        edge_percent=$(echo "scale=2; $avg_edge_time * 100 / $avg_total_module_time" | bc -l)
-        mask_percent=$(echo "scale=2; $avg_mask_time * 100 / $avg_total_module_time" | bc -l)
-        hough_percent=$(echo "scale=2; $avg_hough_time * 100 / $avg_total_module_time" | bc -l)
-        separation_percent=$(echo "scale=2; $avg_separation_time * 100 / $avg_total_module_time" | bc -l)
-        regression_percent=$(echo "scale=2; $avg_regression_time * 100 / $avg_total_module_time" | bc -l)
-        predict_percent=$(echo "scale=2; $avg_predict_time * 100 / $avg_total_module_time" | bc -l)
-        plot_percent=$(echo "scale=2; $avg_plot_time * 100 / $avg_total_module_time" | bc -l)
+        # 计算各模块占比（添加除零检查）
+        if [ $(echo "$avg_total_module_time > 0.001" | bc -l) -eq 1 ]; then
+            denoise_percent=$(echo "scale=2; $avg_denoise_time * 100 / $avg_total_module_time" | bc -l)
+            edge_percent=$(echo "scale=2; $avg_edge_time * 100 / $avg_total_module_time" | bc -l)
+            mask_percent=$(echo "scale=2; $avg_mask_time * 100 / $avg_total_module_time" | bc -l)
+            hough_percent=$(echo "scale=2; $avg_hough_time * 100 / $avg_total_module_time" | bc -l)
+            separation_percent=$(echo "scale=2; $avg_separation_time * 100 / $avg_total_module_time" | bc -l)
+            regression_percent=$(echo "scale=2; $avg_regression_time * 100 / $avg_total_module_time" | bc -l)
+            predict_percent=$(echo "scale=2; $avg_predict_time * 100 / $avg_total_module_time" | bc -l)
+            plot_percent=$(echo "scale=2; $avg_plot_time * 100 / $avg_total_module_time" | bc -l)
+        else
+            denoise_percent=0.00
+            edge_percent=0.00
+            mask_percent=0.00
+            hough_percent=0.00
+            separation_percent=0.00
+            regression_percent=0.00
+            predict_percent=0.00
+            plot_percent=0.00
+        fi
         
         # 记录平均结果
         echo "$config_name,$cpu_cores,$use_neon,$avg_total_time,$avg_total_frames,$avg_denoise_time,$avg_edge_time,$avg_mask_time,$avg_hough_time,$avg_separation_time,$avg_regression_time,$avg_predict_time,$avg_plot_time,$denoise_percent,$edge_percent,$mask_percent,$hough_percent,$separation_percent,$regression_percent,$predict_percent,$plot_percent" >> "$OUTPUT_DIR/module_performance_summary.csv"

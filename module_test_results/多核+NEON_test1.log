@@ -1,49 +1,49 @@
-<6> [12327.436643] (77359) imgvideo:omx: IMG_OMD_ComponentInit Done.
-<6> [12327.436806] (77359) imgvideo:vdecapi: *** Decoding NON-SECURE stream ***
-<6> [12327.437254] (77359) imgvideo:core: [SID=0x03000001]: VidStd:4 [VDEC_STD_H264], BstrFmt:2, UsrId:0, UpdateYUV:y, BwEff:n, Secure:n, DisableMvc:n, FullScan:n
-<6> [12327.444514] (77359) imgvideo:vdecdd: [SID=0x03000001] New stream created (stream id: 0x03000001)
-<6> [12327.446357] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.448674] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.450959] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.453380] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.455626] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.457957] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.460347] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.462615] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.465042] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.467296] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.469622] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.471969] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.474283] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.476599] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.478999] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.481336] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.483688] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.486020] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.488325] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
-<6> [12327.490653] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.736284] (67271) imgvideo:omx: IMG_OMD_ComponentInit Done.
+<6> [8613.736462] (67271) imgvideo:vdecapi: *** Decoding NON-SECURE stream ***
+<6> [8613.736752] (67271) imgvideo:core: [SID=0x03000001]: VidStd:4 [VDEC_STD_H264], BstrFmt:2, UsrId:0, UpdateYUV:y, BwEff:n, Secure:n, DisableMvc:n, FullScan:n
+<6> [8613.742833] (67271) imgvideo:vdecdd: [SID=0x03000001] New stream created (stream id: 0x03000001)
+<6> [8613.744680] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.746969] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.749281] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.751536] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.753843] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.756563] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.759868] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.762276] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.764792] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.767075] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.769398] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.771752] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.774103] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.776494] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.778821] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.781205] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.783517] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.785846] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.788183] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
+<6> [8613.790496] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 0 of size: 1572864, coreId: 0
 开始处理视频...
 彩色输出文件: output_lane_detection_color.avi
 黑白输出文件: output_edge_detection_bw.avi
 视频信息: 1280x720, 29.97fps
-<5> [12327.952444] (77359) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
-<6> [12327.952487] (77359) imgvideo:omx: VDEC_STOPSTATUS_CLOSED_GOP
-<6> [12327.952500] (77359) imgvideo:omx: VDEC_STOPSTATUS_RECONFIGURE
-<6> [12327.952559] (77359) imgvideo:omx: Port Enabled: 0
-<6> [12327.952564] (77359) imgvideo:omx: PSC: Framerate (Q16) :190000, Height :720, Width :1280, Stride :1280, SliceHeight: 720 BitRate: 2498232152227840
-<6> [12327.952569] (77359) imgvideo:omx: Left :0  Top :0 Width :1280 Height :720
-<6> [12327.952701] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.954883] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.956984] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.959058] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.961164] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.963195] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.965217] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.967282] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.969310] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.971366] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.973381] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
-<6> [12327.975425] (77359) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<5> [8613.816843] (67271) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [8613.816906] (67271) imgvideo:omx: VDEC_STOPSTATUS_CLOSED_GOP
+<6> [8613.816916] (67271) imgvideo:omx: VDEC_STOPSTATUS_RECONFIGURE
+<6> [8613.816955] (67271) imgvideo:omx: Port Enabled: 0
+<6> [8613.816959] (67271) imgvideo:omx: PSC: Framerate (Q16) :190000, Height :720, Width :1280, Stride :1280, SliceHeight: 720 BitRate: 3624132059070464
+<6> [8613.816962] (67271) imgvideo:omx: Left :0  Top :0 Width :1280 Height :720
+<6> [8613.817041] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.819047] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.821081] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.823037] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.825105] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.827094] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.829095] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.831173] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.833161] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.835188] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.837523] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
+<6> [8613.839661] (67271) imgvideo:omx: VDECUtil_GetVdecBuf Allocating buffer at port index 1 of size: 1384448, coreId: 0
 检测到车道线，转向预测: Turn right
 检测到车道线，转向预测: Turn right
 检测到车道线，转向预测: Turn right
@@ -508,34 +508,34 @@
 检测到车道线，转向预测: Turn right
 检测到车道线，转向预测: Turn right
 检测到车道线，转向预测: Turn right
-<5> [12412.308970] (77359) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
-<6> [12412.309146] (77359) imgvideo:omx: MISSING_STOP_FLAG
-<5> [12412.309259] (77359) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
-<6> [12412.309314] (77359) imgvideo:omx: MISSING_STOP_FLAG
-<5> [12412.309362] (77359) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
-<6> [12412.309431] (77359) imgvideo:omx: #Total number of Frames Decoded: 476
-<6> [12412.324246] (77359) imgvideo:vdecdd: [SID=0x03000001] Stream destroyed (stream id: 0x03000001)
+<5> [8697.579632] (67271) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [8697.579796] (67271) imgvideo:omx: MISSING_STOP_FLAG
+<5> [8697.579909] (67271) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [8697.579958] (67271) imgvideo:omx: MISSING_STOP_FLAG
+<5> [8697.580055] (67271) imgvideo:vdecapi: [SID=0x03000001] VDECDD_EVENT_STREAM_STOPPED
+<6> [8697.580127] (67271) imgvideo:omx: #Total number of Frames Decoded: 476
+<6> [8697.592413] (67271) imgvideo:vdecdd: [SID=0x03000001] Stream destroyed (stream id: 0x03000001)
 
 ==========================================
 详细性能测试报告
 ==========================================
-整机执行时间: 84358.1 ms
+整机执行时间: 83764.3 ms
 总处理帧数: 464
-平均每帧处理时间: 181.806 ms
-实际处理帧率: 5.50036 FPS
+平均每帧处理时间: 180.526 ms
+实际处理帧率: 5.53935 FPS
 
 模块执行时间分析:
-├── 图像去噪: 4.61839 ms (17.4243%)
-├── 边缘检测: 4.11346 ms (15.5193%)
-├── 掩码处理: 0.773526 ms (2.91836%)
-├── Hough变换: 8.09605 ms (30.5448%)
-├── 线分离: 0.0123707 ms (0.0466722%)
-├── 回归拟合: 0.0254634 ms (0.0960683%)
-├── 转向预测: 0.0021875 ms (0.00825301%)
-└── 结果绘制: 8.86404 ms (33.4423%)
+├── 图像去噪: 4.67822 ms (17.5894%)
+├── 边缘检测: 4.10651 ms (15.4398%)
+├── 掩码处理: 0.768196 ms (2.8883%)
+├── Hough变换: 8.11965 ms (30.5286%)
+├── 线分离: 0.0126422 ms (0.0475329%)
+├── 回归拟合: 0.0260216 ms (0.0978371%)
+├── 转向预测: 0.00215517 ms (0.00810312%)
+└── 结果绘制: 8.88343 ms (33.4003%)
 
 性能瓶颈分析:
-主要瓶颈: 结果绘制 (8.86404 ms)
+主要瓶颈: 结果绘制 (8.88343 ms)
 
 优化建议:
 - Hough变换占用时间较多，可考虑优化参数或使用更高效的直线检测算法

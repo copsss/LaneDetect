@@ -36,4 +36,10 @@ public:
 
 	// Plot the resultant lane and turn prediction in the frame.
 	int plotLane(cv::Mat inputImage, std::vector<cv::Point> lane, std::string turn);
+
+	// Performance monitoring functions
+	void getPerformanceStats(double& avg_denoise, double& avg_edge, double& avg_mask, 
+	                        double& avg_hough, double& avg_separation, double& avg_regression,
+	                        double& avg_predict, double& avg_plot, double& avg_total, int& frames);
+	void resetPerformanceStats();
 };

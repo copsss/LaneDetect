@@ -8,7 +8,56 @@
 #include <string>
 #include <vector>
 #include <opencv2/opencv.hpp>   
+#include <chrono>
+#include <iostream>
 #include "LaneDetector.h"
+
+// 全局变量用于记录模块执行时间
+std::chrono::high_resolution_clock::time_point module_start_time;
+std::chrono::high_resolution_clock::time_point module_end_time;
+double total_denoise_time = 0.0;
+double total_edge_detection_time = 0.0;
+double total_mask_time = 0.0;
+double total_hough_time = 0.0;
+double total_line_separation_time = 0.0;
+double total_regression_time = 0.0;
+double total_predict_time = 0.0;
+double total_plot_time = 0.0;
+int frame_count = 0;
+
+// 时间测量函数
+void start_timer() {
+    module_start_time = std::chrono::high_resolution_clock::now();
+}
+
+double end_timer() {
+    module_end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(module_end_time - module_start_time);
+    return duration.count() / 1000.0; // 转换为毫秒
+}
+
+// 打印性能统计信息
+void print_performance_stats() {
+    if (frame_count > 0) {
+        std::cout << "=== 性能统计信息 ===" << std::endl;
+        std::cout << "总帧数: " << frame_count << std::endl;
+        std::cout << "平均去噪时间: " << total_denoise_time / frame_count << " ms" << std::endl;
+        std::cout << "平均边缘检测时间: " << total_edge_detection_time / frame_count << " ms" << std::endl;
+        std::cout << "平均掩码时间: " << total_mask_time / frame_count << " ms" << std::endl;
+        std::cout << "平均Hough变换时间: " << total_hough_time / frame_count << " ms" << std::endl;
+        std::cout << "平均线分离时间: " << total_line_separation_time / frame_count << " ms" << std::endl;
+        std::cout << "平均回归时间: " << total_regression_time / frame_count << " ms" << std::endl;
+        std::cout << "平均预测时间: " << total_predict_time / frame_count << " ms" << std::endl;
+        std::cout << "平均绘制时间: " << total_plot_time / frame_count << " ms" << std::endl;
+        
+        double total_avg_time = (total_denoise_time + total_edge_detection_time + total_mask_time + 
+                                total_hough_time + total_line_separation_time + total_regression_time + 
+                                total_predict_time + total_plot_time) / frame_count;
+        std::cout << "平均总处理时间: " << total_avg_time << " ms" << std::endl;
+        std::cout << "理论最大帧率: " << 1000.0 / total_avg_time << " FPS" << std::endl;
+        std::cout << "===================" << std::endl;
+    }
+}
 
 // IMAGE BLURRING
 /**
@@ -19,10 +68,14 @@
 */
 cv::Mat LaneDetector::deNoise(cv::Mat inputImage) 
 {
+    start_timer();
+    
     cv::Mat output;
-
     cv::GaussianBlur(inputImage, output, cv::Size(3, 3), 0, 0);
-
+    
+    double elapsed = end_timer();
+    total_denoise_time += elapsed;
+    
     return output;
 }
 
@@ -34,6 +87,8 @@ cv::Mat LaneDetector::deNoise(cv::Mat inputImage)
 */
 cv::Mat LaneDetector::edgeDetector(cv::Mat img_noise) 
 {
+    start_timer();
+    
     cv::Mat output;
     cv::Mat kernel;
     cv::Point anchor;
@@ -55,6 +110,10 @@ cv::Mat LaneDetector::edgeDetector(cv::Mat img_noise)
     // Filter the binary image to obtain the edges
     cv::filter2D(output, output, -1, kernel, anchor, 0, cv::BORDER_DEFAULT);
     // 移除显示：cv::imshow("output", output);
+    
+    double elapsed = end_timer();
+    total_edge_detection_time += elapsed;
+    
     return output;
 }
 
@@ -66,6 +125,8 @@ cv::Mat LaneDetector::edgeDetector(cv::Mat img_noise)
 */
 cv::Mat LaneDetector::mask(cv::Mat img_edges) 
 {
+    start_timer();
+    
     cv::Mat output;
     cv::Mat mask = cv::Mat::zeros(img_edges.size(), img_edges.type());
     cv::Point pts[4] = {
@@ -79,7 +140,10 @@ cv::Mat LaneDetector::mask(cv::Mat img_edges)
     cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255, 0, 0));
     // Multiply the edges image and the mask to get the output
     cv::bitwise_and(img_edges, mask, output);
-
+    
+    double elapsed = end_timer();
+    total_mask_time += elapsed;
+    
     return output;
 }
 
@@ -91,84 +155,71 @@ cv::Mat LaneDetector::mask(cv::Mat img_edges)
 */
 std::vector<cv::Vec4i> LaneDetector::houghLines(cv::Mat img_mask) 
 {
+    start_timer();
+    
     std::vector<cv::Vec4i> line;
 
     // rho and theta are selected by trial and error
     HoughLinesP(img_mask, line, 1, CV_PI / 180, 20, 20, 30);
-
+    
+    double elapsed = end_timer();
+    total_hough_time += elapsed;
+    
     return line;
 }
 
-// SORT RIGHT AND LEFT LINES
+// LINE SEPARATION
 /**
-*@brief Sort all the detected Hough lines by slope.
-*@brief The lines are classified into right or left depending
-*@brief on the sign of their slope and their approximate location
-*@param lines is the vector that contains all the detected lines
-*@param img_edges is used for determining the image center
-*@return The output is a vector(2) that contains all the classified lines
+*@brief Separate lines into right and left lines
+*@param lines is the input that contains all the detected lines
+*@param img_edges is used for computational purposes
+*@return The output is a vector that contains all the classified lines
 */
 std::vector<std::vector<cv::Vec4i> > LaneDetector::lineSeparation(std::vector<cv::Vec4i> lines, cv::Mat img_edges) 
 {
+    start_timer();
+    
     std::vector<std::vector<cv::Vec4i> > output(2);
     size_t j = 0;
     cv::Point ini;
     cv::Point fini;
-    double slope_thresh = 0.3;
-    std::vector<double> slopes;
-    std::vector<cv::Vec4i> selected_lines;
-    std::vector<cv::Vec4i> right_lines, left_lines;
+    double slope_thresh_min = 0.3;
+    double slope_thresh_max = 0.85;
 
-    // Calculate the slope of all the detected lines
     for (auto i : lines) {
         ini = cv::Point(i[0], i[1]);
         fini = cv::Point(i[2], i[3]);
 
-        // Basic algebra: slope = (y1 - y0)/(x1 - x0)
-        double slope = (static_cast<double>(fini.y) - static_cast<double>(ini.y)) / (static_cast<double>(fini.x) - static_cast<double>(ini.x) + 0.00001);
+        double slope = (static_cast<double>(fini.y) - static_cast<double>(ini.y)) /
+                      (static_cast<double>(fini.x) - static_cast<double>(ini.x) + 0.00001);
 
-        // If the slope is too horizontal, discard the line
-        // If not, save them  and their respective slope
-        if (std::abs(slope) > slope_thresh) {
-            slopes.push_back(slope);
-            selected_lines.push_back(i);
+        if ((abs(slope) > slope_thresh_min) && (abs(slope) < slope_thresh_max)) {
+            if (slope > 0 && fini.x > 640) {
+                output[0].push_back(i);
+            }
+            else if (slope < 0 && fini.x < 640) {
+                output[1].push_back(i);
+            }
         }
     }
-
-    // Split the lines into right and left lines
-    img_center = static_cast<double>((img_edges.cols / 2));
-    while (j < selected_lines.size()) {
-        ini = cv::Point(selected_lines[j][0], selected_lines[j][1]);
-        fini = cv::Point(selected_lines[j][2], selected_lines[j][3]);
-
-        // Condition to classify line as left side or right side
-        if (slopes[j] > 0 && fini.x > img_center && ini.x > img_center) {
-            right_lines.push_back(selected_lines[j]);
-            right_flag = true;
-        }
-        else if (slopes[j] < 0 && fini.x < img_center && ini.x < img_center) {
-            left_lines.push_back(selected_lines[j]);
-            left_flag = true;
-        }
-        j++;
-    }
-
-    output[0] = right_lines;
-    output[1] = left_lines;
-
+    
+    double elapsed = end_timer();
+    total_line_separation_time += elapsed;
+    
     return output;
 }
 
-// REGRESSION FOR LEFT AND RIGHT LINES
+// REGRESSION
 /**
-*@brief Regression takes all the classified line segments initial and final points and fits a new lines out of them using the method of least squares.
-*@brief This is done for both sides, left and right.
+*@brief Regression takes all the classified line coordinates initial and final and returns a function
 *@param left_right_lines is the output of the lineSeparation function
 *@param inputImage is used to select where do the lines will end
-*@return output contains the initial and final points of both lane boundary lines
+*@return The function returns a vector containing the initial and final points of the line functions
 */
 std::vector<cv::Point> LaneDetector::regression(std::vector<std::vector<cv::Vec4i> > left_right_lines, cv::Mat inputImage) 
 {
+    start_timer();
+    
     std::vector<cv::Point> output(4);
     cv::Point ini;
     cv::Point fini;
@@ -180,25 +231,18 @@ std::vector<cv::Point> LaneDetector::regression(std::vector<std::vector<cv::Vec4
     std::vector<cv::Point> left_pts;
 
     // If right lines are being detected, fit a line using all the init and final points of the lines
-    if (right_flag == true) {
-        for (auto i : left_right_lines[0]) {
-            ini = cv::Point(i[0], i[1]);
-            fini = cv::Point(i[2], i[3]);
+    if (left_right_lines[0].size() > 0) {
+        for (auto j : left_right_lines[0]) {
+            ini = cv::Point(j[0], j[1]);
+            fini = cv::Point(j[2], j[3]);
 
             right_pts.push_back(ini);
             right_pts.push_back(fini);
         }
-
-        if (right_pts.size() > 0) {
-            // The right line is formed here
-            cv::fitLine(right_pts, right_line, cv::DIST_L2, 0, 0.01, 0.01);
-            right_m = right_line[1] / right_line[0];
-            right_b = cv::Point(right_line[2], right_line[3]);
-        }
     }
 
     // If left lines are being detected, fit a line using all the init and final points of the lines
-    if (left_flag == true) {
+    if (left_right_lines[1].size() > 0) {
         for (auto j : left_right_lines[1]) {
             ini2 = cv::Point(j[0], j[1]);
             fini2 = cv::Point(j[2], j[3]);
@@ -206,13 +250,22 @@ std::vector<cv::Point> LaneDetector::regression(std::vector<std::vector<cv::Vec4
             left_pts.push_back(ini2);
             left_pts.push_back(fini2);
         }
+    }
 
-        if (left_pts.size() > 0) {
-            // The left line is formed here
-            cv::fitLine(left_pts, left_line, cv::DIST_L2, 0, 0.01, 0.01);
-            left_m = left_line[1] / left_line[0];
-            left_b = cv::Point(left_line[2], left_line[3]);
-        }
+    // If right lines are being detected, fit a line using all the init and final points of the lines
+    if (right_pts.size() > 0) {
+        // The right line is formed here
+        cv::fitLine(right_pts, right_line, cv::DIST_L2, 0, 0.01, 0.01);
+        right_m = right_line[1] / right_line[0];
+        right_b = cv::Point(right_line[2], right_line[3]);
+    }
+
+    // If left lines are being detected, fit a line using all the init and final points of the lines
+    if (left_pts.size() > 0) {
+        // The left line is formed here
+        cv::fitLine(left_pts, left_line, cv::DIST_L2, 0, 0.01, 0.01);
+        left_m = left_line[1] / left_line[0];
+        left_b = cv::Point(left_line[2], left_line[3]);
     }
 
     // One the slope and offset points have been obtained, apply the line equation to obtain the line points
@@ -229,7 +282,10 @@ std::vector<cv::Point> LaneDetector::regression(std::vector<std::vector<cv::Vec4
     output[1] = cv::Point(right_fin_x, fin_y);
     output[2] = cv::Point(left_ini_x, ini_y);
     output[3] = cv::Point(left_fin_x, fin_y);
-
+    
+    double elapsed = end_timer();
+    total_regression_time += elapsed;
+    
     return output;
 }
 
@@ -241,6 +297,8 @@ std::vector<cv::Point> LaneDetector::regression(std::vector<std::vector<cv::Vec4
 */
 std::string LaneDetector::predictTurn() 
 {
+    start_timer();
+    
     std::string output;
     double vanish_x;
     double thr_vp = 10;
@@ -255,7 +313,10 @@ std::string LaneDetector::predictTurn()
         output = "Turn right";
     else if (vanish_x >= (img_center - thr_vp) && vanish_x <= (img_center + thr_vp))
         output = "Straight";
-
+    
+    double elapsed = end_timer();
+    total_predict_time += elapsed;
+    
     return output;
 }
 
@@ -269,6 +330,8 @@ std::string LaneDetector::predictTurn()
 */
 int LaneDetector::plotLane(cv::Mat inputImage, std::vector<cv::Point> lane, std::string turn) 
 {
+    start_timer();
+    
     std::vector<cv::Point> poly_points;
     cv::Mat output;
 
@@ -292,5 +355,45 @@ int LaneDetector::plotLane(cv::Mat inputImage, std::vector<cv::Point> lane, std:
     // cv::namedWindow("Lane", cv::WINDOW_AUTOSIZE);
     // cv::imshow("Lane", inputImage);
     
+    double elapsed = end_timer();
+    total_plot_time += elapsed;
+    frame_count++;
+    
     return 0;
+}
+
+// 获取性能统计信息的函数
+void LaneDetector::getPerformanceStats(double& avg_denoise, double& avg_edge, double& avg_mask, 
+                                      double& avg_hough, double& avg_separation, double& avg_regression,
+                                      double& avg_predict, double& avg_plot, double& avg_total, int& frames) {
+    if (frame_count > 0) {
+        avg_denoise = total_denoise_time / frame_count;
+        avg_edge = total_edge_detection_time / frame_count;
+        avg_mask = total_mask_time / frame_count;
+        avg_hough = total_hough_time / frame_count;
+        avg_separation = total_line_separation_time / frame_count;
+        avg_regression = total_regression_time / frame_count;
+        avg_predict = total_predict_time / frame_count;
+        avg_plot = total_plot_time / frame_count;
+        avg_total = (total_denoise_time + total_edge_detection_time + total_mask_time + 
+                    total_hough_time + total_line_separation_time + total_regression_time + 
+                    total_predict_time + total_plot_time) / frame_count;
+        frames = frame_count;
+    } else {
+        avg_denoise = avg_edge = avg_mask = avg_hough = avg_separation = avg_regression = avg_predict = avg_plot = avg_total = 0.0;
+        frames = 0;
+    }
+}
+
+// 重置性能统计
+void LaneDetector::resetPerformanceStats() {
+    total_denoise_time = 0.0;
+    total_edge_detection_time = 0.0;
+    total_mask_time = 0.0;
+    total_hough_time = 0.0;
+    total_line_separation_time = 0.0;
+    total_regression_time = 0.0;
+    total_predict_time = 0.0;
+    total_plot_time = 0.0;
+    frame_count = 0;
 }

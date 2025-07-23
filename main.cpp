@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <opencv2/opencv.hpp>
+#include <chrono>
 #include "LaneDetector.h"
 
 /**
@@ -24,8 +25,14 @@ int main()
     std::string turn;
     int flag_plot = -1;         // 返回值
 
+    // 性能统计变量
+    std::chrono::high_resolution_clock::time_point total_start_time;
+    std::chrono::high_resolution_clock::time_point total_end_time;
+    double total_processing_time = 0.0;
+    int total_frames_processed = 0;
+
     // 打开测试视频文件
-    cv::VideoCapture cap("video_harder_challenge.mp4");
+    cv::VideoCapture cap("video_challenge.mp4");
     if (!cap.isOpened())
         return -1;
 
@@ -35,13 +42,13 @@ int main()
     double fps = cap.get(cv::CAP_PROP_FPS);
     
     // 创建彩色视频写入器（车道线检测结果）
-    cv::VideoWriter color_video_writer("video_harder_challenge_lane_detection_color.avi", 
+    cv::VideoWriter color_video_writer("output_lane_detection_color.avi", 
                                       cv::VideoWriter::fourcc('M','J','P','G'), 
                                       fps, 
                                       cv::Size(frame_width, frame_height));
 
     // 创建黑白视频写入器（边缘检测结果）
-    cv::VideoWriter bw_video_writer("video_harder_challenge_edge_detection_bw.avi", 
+    cv::VideoWriter bw_video_writer("output_edge_detection_bw.avi", 
                                    cv::VideoWriter::fourcc('M','J','P','G'), 
                                    fps, 
                                    cv::Size(frame_width, frame_height));
@@ -57,8 +64,12 @@ int main()
     }
 
     std::cout << "开始处理视频..." << std::endl;
-    std::cout << "彩色输出文件: video_harder_challenge_lane_detection_color.avi" << std::endl;
-    std::cout << "黑白输出文件: video_harder_challenge_edge_detection_bw.avi" << std::endl;
+    std::cout << "彩色输出文件: output_lane_detection_color.avi" << std::endl;
+    std::cout << "黑白输出文件: output_edge_detection_bw.avi" << std::endl;
+    std::cout << "视频信息: " << frame_width << "x" << frame_height << ", " << fps << "fps" << std::endl;
+
+    // 记录总开始时间
+    total_start_time = std::chrono::high_resolution_clock::now();
 
     // 车道线检测算法主循环
     while (1) 
@@ -112,16 +123,71 @@ int main()
             color_video_writer.write(frame);
             std::cout << "未检测到车道线" << std::endl;
         }
+
+        total_frames_processed++;
     }
+
+    // 记录总结束时间
+    total_end_time = std::chrono::high_resolution_clock::now();
+    auto total_duration = std::chrono::duration_cast<std::chrono::microseconds>(total_end_time - total_start_time);
+    total_processing_time = total_duration.count() / 1000.0; // 转换为毫秒
 
     // 释放资源
     cap.release();
     color_video_writer.release();
     bw_video_writer.release();
     
+    // 获取详细的性能统计信息
+    double avg_denoise, avg_edge, avg_mask, avg_hough, avg_separation, avg_regression, avg_predict, avg_plot, avg_total;
+    int frames;
+    lanedetector.getPerformanceStats(avg_denoise, avg_edge, avg_mask, avg_hough, avg_separation, avg_regression, avg_predict, avg_plot, avg_total, frames);
+
+    // 输出详细的性能报告
+    std::cout << "\n==========================================" << std::endl;
+    std::cout << "详细性能测试报告" << std::endl;
+    std::cout << "==========================================" << std::endl;
+    std::cout << "整机执行时间: " << total_processing_time << " ms" << std::endl;
+    std::cout << "总处理帧数: " << total_frames_processed << std::endl;
+    std::cout << "平均每帧处理时间: " << total_processing_time / total_frames_processed << " ms" << std::endl;
+    std::cout << "实际处理帧率: " << 1000.0 / (total_processing_time / total_frames_processed) << " FPS" << std::endl;
+    
+    std::cout << "\n模块执行时间分析:" << std::endl;
+    std::cout << "├── 图像去噪: " << avg_denoise << " ms (" << (avg_denoise/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── 边缘检测: " << avg_edge << " ms (" << (avg_edge/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── 掩码处理: " << avg_mask << " ms (" << (avg_mask/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── Hough变换: " << avg_hough << " ms (" << (avg_hough/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── 线分离: " << avg_separation << " ms (" << (avg_separation/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── 回归拟合: " << avg_regression << " ms (" << (avg_regression/avg_total*100) << "%)" << std::endl;
+    std::cout << "├── 转向预测: " << avg_predict << " ms (" << (avg_predict/avg_total*100) << "%)" << std::endl;
+    std::cout << "└── 结果绘制: " << avg_plot << " ms (" << (avg_plot/avg_total*100) << "%)" << std::endl;
+    
+    std::cout << "\n性能瓶颈分析:" << std::endl;
+    double max_time = std::max({avg_denoise, avg_edge, avg_mask, avg_hough, avg_separation, avg_regression, avg_predict, avg_plot});
+    if (max_time == avg_hough) {
+        std::cout << "主要瓶颈: Hough变换 (" << avg_hough << " ms)" << std::endl;
+    } else if (max_time == avg_edge) {
+        std::cout << "主要瓶颈: 边缘检测 (" << avg_edge << " ms)" << std::endl;
+    } else if (max_time == avg_regression) {
+        std::cout << "主要瓶颈: 回归拟合 (" << avg_regression << " ms)" << std::endl;
+    } else if (max_time == avg_plot) {
+        std::cout << "主要瓶颈: 结果绘制 (" << avg_plot << " ms)" << std::endl;
+    }
+    
+    std::cout << "\n优化建议:" << std::endl;
+    if (avg_hough > avg_total * 0.3) {
+        std::cout << "- Hough变换占用时间较多，可考虑优化参数或使用更高效的直线检测算法" << std::endl;
+    }
+    if (avg_edge > avg_total * 0.2) {
+        std::cout << "- 边缘检测可考虑使用NEON指令集优化" << std::endl;
+    }
+    if (avg_plot > avg_total * 0.15) {
+        std::cout << "- 绘制操作可考虑减少不必要的图形操作" << std::endl;
+    }
+    
+    std::cout << "==========================================" << std::endl;
     std::cout << "视频处理完成！" << std::endl;
-    std::cout << "彩色输出文件: video_harder_challenge_lane_detection_color.avi" << std::endl;
-    std::cout << "黑白输出文件: video_harder_challenge_edge_detection_bw.avi" << std::endl;
+    std::cout << "彩色输出文件: output_lane_detection_color.avi" << std::endl;
+    std::cout << "黑白输出文件: output_edge_detection_bw.avi" << std::endl;
 
     return flag_plot;
 }
